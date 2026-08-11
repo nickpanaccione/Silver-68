@@ -1,0 +1,44 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: macOS
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # JUCE is a submodule; without this the configure step fails
+          submodules: recursive
+
+      - name: Configure
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      - name: Verify VST3 bundle
+        run: |
+          BINARY="build/Silver68_artefacts/Release/VST3/Silver 68.vst3/Contents/MacOS/Silver 68"
+
+          # a bundle can link and still ship empty if a post-build step fails
+          test -f "$BINARY" || { echo "::error::no executable in bundle"; exit 1; }
+
+          lipo -info "$BINARY"
+          lipo -info "$BINARY" | grep -q arm64 || { echo "::error::missing arm64 slice"; exit 1; }
+          lipo -info "$BINARY" | grep -q x86_64 || { echo "::error::missing x86_64 slice"; exit 1; }
+
+          codesign --verify --strict "$BINARY"
+
+      - name: Verify AU and Standalone
+        run: |
+          test -f "build/Silver68_artefacts/Release/AU/Silver 68.component/Contents/MacOS/Silver 68"
+          test -f "build/Silver68_artefacts/Release/Standalone/Silver 68.app/Contents/MacOS/Silver 68"
