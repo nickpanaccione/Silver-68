@@ -1,0 +1,41 @@
+---
+Language: Cpp
+BasedOnStyle: LLVM
+
+IndentWidth: 2
+TabWidth: 2
+UseTab: Never
+ColumnLimit: 100
+
+# braces attach, and are never omitted
+BreakBeforeBraces: Attach
+InsertBraces: true
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseLabelsOnASingleLine: false
+
+# JUCE call style: foo (arg) with a space, foo() without
+SpaceBeforeParens: Custom
+SpaceBeforeParensOptions:
+  AfterControlStatements: true
+  AfterFunctionDeclarationName: false
+  AfterFunctionDefinitionName: false
+  BeforeNonEmptyParentheses: true
+AllowShortFunctionsOnASingleLine: Inline
+
+AccessModifierOffset: -2
+NamespaceIndentation: None
+
+# JUCE brace-init style: Type { a, b }, not Type{a, b}
+Cpp11BracedListStyle: false
+
+# one member initializer per line
+PackConstructorInitializers: Never
+BreakConstructorInitializers: AfterColon
+PenaltyReturnTypeOnItsOwnLine: 1000
+PointerAlignment: Left
+ReferenceAlignment: Left
+AlwaysBreakTemplateDeclarations: Yes
+EmptyLineBeforeAccessModifier: Always
+SortIncludes: false

@@ -1,0 +1,46 @@
+# Build output
+build/
+cmake-build-*/
+*.dSYM/
+build.log
+
+# CMake
+CMakeUserPresets.json
+CMakeCache.txt
+CMakeFiles/
+
+# Compiled binaries
+*.dylib
+*.so
+*.dll
+
+# clangd / IDE indexes
+.cache/
+.clangd/
+compile_commands.json
+
+# IDEs / editors
+.vscode/
+.idea/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# macOS
+.DS_Store
+._*
+
+# LTspice simulation output (regenerated from the .asc schematics)
+*.raw
+*.op.raw
+*.log
+*.net
+
+# Python analysis scripts
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Other
+notes/
+.env
