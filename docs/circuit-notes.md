@@ -10,4 +10,12 @@ values, bias points from LTspice, and what to model vs. approximate.)
 | V4         | 12AT7        | Phase inverter                     |
 | V5, V6     | 6L6GC        | Push-pull power, fixed bias        |
 | Rectifier  | solid-state  | Silicon diodes (no rectifier tube) |
-Transformers: TR1 power, TR2 output, TR3 speaker/impedance section
+Transformers: TR1 power, TR2 output, TR3 speaker/impedance section.
+
+## Channels
+
+Each channel has a Volume, Treble and Bass (250k pots).
+
+* Bass Instrument: *Deep* switch adds low-end shelf.
+* Normal: *Bright* switch adds treble bleed across volume pot.
+
