@@ -2,6 +2,8 @@
 
 Working notes while tracing the schematic. (stage topologies, component 
 values, bias points from LTspice, and what to model vs. approximate.)
+> Tracing Fender drawing 047779 rev C, "Bassman-Amp AC 568", sheet 1 of 2.
+
 
 ## Tube complement
 | Position   | Tube         | Role                               |
